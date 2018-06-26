@@ -44,11 +44,6 @@ type Repo struct {
 	NoContent bool   `json:"no_content,omitempty"`
 }
 
-//"boot_seq": {
-//"name": {
-//"os": {
-//"templates": {
-
 func (r RepoService) DeleteRepo(name string) (*misc.ResultMessage, *errorMsg.ErrorMessage) {
 	resMsg := new(misc.ResultMessage)
 	resError := new(errorMsg.ErrorMessage)

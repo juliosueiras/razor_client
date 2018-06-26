@@ -2,7 +2,10 @@ package razor
 
 import (
 	"github.com/dghubble/sling"
+	"github.com/juliosueiras/razor_client/api/node"
+	"github.com/juliosueiras/razor_client/api/policy"
 	"github.com/juliosueiras/razor_client/api/repo"
+	"github.com/juliosueiras/razor_client/api/tag"
 	"github.com/juliosueiras/razor_client/api/task"
 )
 
@@ -11,6 +14,9 @@ type Client struct {
 	HTTPClient *sling.Sling
 	Repo       *repo.RepoService
 	Task       *task.TaskService
+	Node       *node.NodeService
+	Tag        *tag.TagService
+	Policy     *policy.PolicyService
 }
 
 func (c *Client) SetBaseURL(newUrl string) {
@@ -26,6 +32,18 @@ func New() *Client {
 	}
 
 	c.Task = &task.TaskService{
+		Client: c.HTTPClient,
+	}
+
+	c.Node = &node.NodeService{
+		Client: c.HTTPClient,
+	}
+
+	c.Tag = &tag.TagService{
+		Client: c.HTTPClient,
+	}
+
+	c.Policy = &policy.PolicyService{
 		Client: c.HTTPClient,
 	}
 

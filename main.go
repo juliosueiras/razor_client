@@ -7,9 +7,8 @@ import (
 
 func main() {
 	client := razor.New()
+	client.SetBaseURL("http://142.55.244.227:8150/")
 
-	exist, err := client.Task.CheckIfTaskExist("vmware_esxi2")
-
-	fmt.Println(err)
-	fmt.Println(exist)
+	policy, _ := client.Policy.PolicyDetails("test")
+	fmt.Println(policy.NodeMetadata)
 }
